@@ -1,0 +1,269 @@
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>UTone</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    
+
+  <!--   Intro -->
+
+   <div id="logocontainer">
+        <p class="logo">UTone</p>   
+    </div>
+
+    <!--  Input -->
+
+    <div id="drag-upload-wrap" class="drag-upload-wrap">
+      <div class="drag-upload-container">
+        <p class="upload-text-major">Завантажте зображення</p>
+        <p class="upload-text-minor">JPG або PNG</p>
+        <div class="drag-area">
+          <div id="drag-box-border"class="drag-box-border">
+          </div>
+          <div id="drag-box"class="drag-box">
+            <div class="drag-area-content">
+              <div class="drag-area-upload-icon">
+              </div>
+              <div class="drag-area-text"><span class="white-bold-text">Відкрийте</span> або перетягніть у виділену область
+              </div>
+              <input type="file" onChange="encodeImageFileAsURL()" id="uploadFile" accept="image/x-png,image/jpeg" ondragover="drag()" ondragleave="dragleave()" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main -->
+
+    <div id="sidenav" class="sidenav">
+      <div class="title">
+        <p>UTone</p>
+      </div>
+              <div class="preset_container">
+                <p class="system_text">ПРЕСЕТИ</p>
+                <div id="preset_group_1" class="preset_group" >
+                  <div class="preset_name">
+                    <p class="preset_text">OVERDRIVE</p>
+                  </div>
+                  <div id="preset-1" class="preset">
+                  </div>
+                  <div id="preset-2" class="preset">
+                  </div>
+                  <div id="preset-3" class="preset">
+                  </div>
+                  <div id="preset-4" class="preset">
+                  </div>
+              </div>
+              <div id="preset_group_2" class="preset_group">
+                <div  class="preset_name" >
+                  <p class="preset_text">MONOCHROME</p>
+                </div>
+                <div id="preset-1" class="preset">
+                </div>
+                <div id="preset-2" class="preset">
+                </div>
+                <div id="preset-3" class="preset">
+                </div>
+                <div id="preset-4" class="preset">
+                </div>
+            </div>
+            <div id="preset_group_3" class="preset_group">
+              <div class="preset_name">
+                <p class="preset_text">GRAVITY</p>
+              </div>
+              <div id="preset-1" class="preset">
+              </div>
+              <div id="preset-2" class="preset">
+              </div>
+              <div id="preset-3" class="preset">
+              </div>
+              <div id="preset-4" class="preset">
+              </div>
+          </div>
+          <div id="preset_group_4" class="preset_group">
+            <div class="preset_name">
+              <p class="preset_text">MATRIX</p>
+            </div>
+            <div id="preset-1" class="preset">
+            </div>
+            <div id="preset-2" class="preset">
+            </div>
+            <div id="preset-3" class="preset">
+            </div>
+            <div id="preset-4" class="preset">
+            </div>
+        </div>
+        <div id="preset_group_5" class="preset_group">
+          <div class="preset_name">
+            <p class="preset_text">ULTRANEON</p>
+          </div>
+          <div id="preset-1" class="preset">
+          </div>
+          <div id="preset-2" class="preset">
+          </div>
+          <div id="preset-3" class="preset">
+          </div>
+          <div id="preset-4" class="preset">
+          </div>
+        </div>
+            </div>
+    </div>
+
+    <!-- Panel -->
+    <div id="main_container">
+      <div id="container" class="container">
+
+        <div class="style-container">
+          <div class="style-wrapper">
+            <div class="style-text">Стиль:</div>
+              <div class="style-label">
+                <span class="style-label-text">OVERDRIVE</span>
+                <div class="arrow">
+                </div>
+              </div>
+              <div id="style-menu-container">
+              <div id="style-menu">
+                <p class="style-menu-text" onclick="setstyle('overdrive', 'soft-light', 'screen')">OVERDRIVE</p>
+                <p class="style-menu-text" onclick="setstyle('monochrome', 'screen', 'color-dodge')">MONOCHROME</p>
+                <p class="style-menu-text" onclick="setstyle('gravity', 'multiply', 'screen')">GRAVITY</p>
+                <p class="style-menu-text" onclick="setstyle('matrix', 'multiply', 'lighteen')">MATRIX</p>
+                <p class="style-menu-text" onclick="setstyle('ultraneon', 'color-dodge', 'lighteen')">ULTRANEON</p>
+              </div>
+            </div>
+              
+          </div>
+        </div>
+
+        <div class="palette-container">
+          
+
+        <div id="palette">
+          <div id="colors_container">
+            <div id="primary_color" class="color">
+              </div>
+             
+            <div id="primary_color_dropdown" class="color_dropdown">
+          
+          <div id="dropdown">
+
+            <div class="range">
+              <p class="range-text">ВІДТІНОК</p>
+              <input id="primary_hue" class="hue input_range" type="range" min="0" max="360" step="1" value="35" oninput="primary_range_sync()">
+              <input type="text" id="input_primary_hue" onkeyup="primary_inputfield_sync()" value="40" maxlength="3" >
+            </div>
+
+            <div class="range">
+              <p class="range-text">НАСИЧЕНІСТЬ</p>
+              <input id="primary_saturation" class="s input_range" type="range" min="0" max="100" step="1" value="97" oninput="primary_range_sync()">
+              <input type="text" id="input_primary_saturation" onkeyup="primary_inputfield_sync()" value="100" maxlength="3" >
+            </div>
+
+            <div class="range">
+              <p class="range-text">ОСВІТЛЕНІСТЬ</p>
+              <input id="primary_luminocity" class="l input_range" type="range" min="0" max="100" step="1" value="70" oninput="primary_range_sync()">
+              <input type="text" id="input_primary_luminocity" onkeyup="primary_inputfield_sync()" onchange="input_fill()" value="50" maxlength="3" >
+            </div>
+
+          </div>
+        </div>
+ 
+          <div id="secondary_color" class="color">
+          </div>
+       
+          
+          <div id="secondary_color_dropdown" class="color_dropdown">
+            <div id="dropdown">
+            <div class="range">
+              <p class="range-text">ВІДТІНОК</p>
+              <input id="secondary_hue" class="hue input_range" type="range" min="0" max="360" step="1" value="230" oninput="secondary_range_sync()">
+              <input type="text" id="input_secondary_hue" onkeyup="secondary_inputfield_sync()" value="40" maxlength="3">
+          </div>
+
+          <div class="range">
+            <p class="range-text">НАСИЧЕНІСТЬ</p>
+            <input id="secondary_saturation" class="s input_range" type="range" min="0" max="100" step="1" value="100" oninput="secondary_range_sync()">
+            <input type="text" id="input_secondary_saturation" onkeyup="secondary_inputfield_sync()" value="40" maxlength="3">
+          </div>
+
+          <div class="range">
+            <p class="range-text">ОСВІТЛЕНІСТЬ</p>
+            <input id="secondary_luminocity" class="l input_range" type="range" min="0" max="100" step="1" value="80" oninput="secondary_range_sync()">
+            <input type="text" id="input_secondary_luminocity" onkeyup="secondary_inputfield_sync()" value="40" maxlength="3">
+            </div>
+            </div>
+            </div>
+        </div>
+      </div>
+    
+
+    
+        </div>
+        <div class="button1-container" onclick="document.getElementById('inputFileToLoad').click();">
+          <div class="upload-button">
+            <div class="upload-icon">
+            </div>
+            <div class="button-text">Відкрити
+            </div>
+          </div>
+        </div>
+        <div class="button2-container" onclick="downloadImage()">
+          <div class="download-button">
+            <div class="download-icon">
+            </div>
+            <div class="button-text">Завантажити
+            </div>
+          </div>
+        </div>
+        
+      
+      
+      </div>
+    
+      
+      
+      <div id="canvas_container" class="canvas_container">
+       <canvas id="duotone" class="duotone"></canvas>
+      </div>
+    </div>
+
+      
+    
+
+
+    
+
+
+
+  
+
+      
+  
+<script>
+  setTimeout(cleanlogo,4000);
+  function drag(){
+    document.getElementById('drag-box').className = "dragover drag-box";
+  }
+  function dragleave(){
+    document.getElementById('drag-box').className = "drag-box";
+  }
+  function cleanlogo(){
+    document.getElementById("logocontainer").style.display = "none";
+  }
+  function drop(){
+    document.getElementById('drag-upload-wrap').style.display = "none";
+    document.getElementById('sidenav').className = "sidenav-animation sidenav";
+    document.getElementById('container').className = "container-animation container";
+  }
+  
+
+</script>
+</script>
+<script type="text/javascript" src='compress.js'></script>
+<script type="text/javascript" src="Duotone.js"></script>
+
+
+  </body>
+</html>
